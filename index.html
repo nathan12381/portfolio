@@ -1278,7 +1278,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: clamp(28px, 5vw, 72px);
+            padding: clamp(16px, 3.2dvh, 34px) clamp(18px, 4vw, 48px);
             background: rgba(6, 6, 8, .72);
             backdrop-filter: blur(22px);
         }
@@ -1288,9 +1288,11 @@
         }
 
         .modal-card {
-            width: min(1080px, 100%);
-            max-height: calc(100svh - clamp(56px, 10vw, 144px));
-            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            width: min(1040px, 100%);
+            max-height: calc(100dvh - clamp(32px, 6.4dvh, 68px));
+            overflow: hidden;
             border: 1px solid var(--line-strong);
             border-radius: 30px;
             background: #18161d;
@@ -1302,29 +1304,40 @@
         }
 
         .modal-body {
-            padding: 28px;
+            display: flex;
+            flex: 1 1 auto;
+            min-height: 0;
+            flex-direction: column;
+            padding: clamp(18px, 2.5dvh, 24px) clamp(20px, 3vw, 28px) clamp(16px, 2.4dvh, 22px);
         }
 
         .modal-body h3 {
-            margin: 12px 0 16px;
-            font-size: clamp(34px, 5vw, 58px);
+            margin: clamp(6px, 1dvh, 10px) 0 clamp(8px, 1.3dvh, 12px);
+            font-size: clamp(32px, 4.2dvh, 52px);
             line-height: 1;
         }
 
         .modal-body p {
+            margin: 0;
             color: #bfb9c7;
-            line-height: 1.78;
+            font-size: clamp(13px, 1.5dvh, 15px);
+            line-height: 1.62;
         }
 
         .modal-gallery {
             position: relative;
-            margin-top: 18px;
+            flex: 1 1 auto;
+            min-height: 0;
+            margin-top: clamp(12px, 1.8dvh, 16px);
         }
 
         .gallery-stage {
             position: relative;
             display: block;
             width: 100%;
+            height: min(50dvh, 560px);
+            max-height: calc(100dvh - 300px);
+            min-height: 300px;
             aspect-ratio: 16 / 9;
             border-radius: 22px;
             overflow: hidden;
@@ -1386,8 +1399,8 @@
             align-items: center;
             justify-content: center;
             gap: 18px;
-            min-height: 58px;
-            padding-top: 14px;
+            min-height: clamp(38px, 5.5dvh, 48px);
+            padding-top: clamp(8px, 1.2dvh, 12px);
         }
 
         .gallery-page {
@@ -1400,7 +1413,8 @@
             position: relative;
             display: flex;
             justify-content: flex-end;
-            margin-top: -44px;
+            min-height: 0;
+            margin-top: calc(clamp(38px, 5.5dvh, 48px) * -1);
             pointer-events: none;
         }
 
@@ -1646,6 +1660,31 @@
                 align-items: flex-start;
                 flex-direction: column;
             }
+
+            .modal {
+                padding: 14px;
+            }
+
+            .modal-card {
+                width: min(100%, 860px);
+                max-height: calc(100dvh - 28px);
+                border-radius: 26px;
+            }
+
+            .modal-body h3 {
+                font-size: clamp(30px, 4.6dvh, 44px);
+            }
+
+            .modal-body p {
+                font-size: 13px;
+                line-height: 1.52;
+            }
+
+            .gallery-stage {
+                height: min(44dvh, 480px);
+                max-height: calc(100dvh - 270px);
+                min-height: 240px;
+            }
         }
 
         @media (max-width: 620px) {
@@ -1746,9 +1785,45 @@
                 flex-basis: 86%;
             }
 
-            .modal-body { padding: 20px; }
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-card {
+                max-height: calc(100dvh - 20px);
+                border-radius: 22px;
+            }
+
+            .modal-body {
+                padding: 16px;
+            }
+
+            .modal-body h3 {
+                font-size: clamp(28px, 4.4dvh, 36px);
+            }
+
+            .modal-body p {
+                font-size: 12px;
+                line-height: 1.45;
+            }
+
             .modal-visual { min-height: 72px; }
-            .modal-actions { margin-top: -38px; }
+
+            .gallery-stage {
+                height: min(38dvh, 360px);
+                max-height: calc(100dvh - 250px);
+                min-height: 190px;
+                border-radius: 18px;
+            }
+
+            .gallery-footer {
+                min-height: 38px;
+                padding-top: 8px;
+            }
+
+            .modal-actions {
+                margin-top: -38px;
+            }
 
             .timeline-item {
                 grid-template-columns: 1fr;
@@ -1758,6 +1833,51 @@
             .contact-panel {
                 min-height: 360px;
                 padding: 34px 18px;
+            }
+        }
+
+        @media (max-height: 760px) {
+            .modal {
+                padding-block: 12px;
+            }
+
+            .modal-card {
+                max-height: calc(100dvh - 24px);
+            }
+
+            .modal-body {
+                padding-top: 16px;
+                padding-bottom: 14px;
+            }
+
+            .modal-body h3 {
+                font-size: clamp(28px, 5.2dvh, 42px);
+                margin-top: 4px;
+                margin-bottom: 8px;
+            }
+
+            .modal-body p {
+                font-size: 12px;
+                line-height: 1.42;
+            }
+
+            .modal-gallery {
+                margin-top: 10px;
+            }
+
+            .gallery-stage {
+                height: min(45dvh, 460px);
+                max-height: calc(100dvh - 245px);
+                min-height: 220px;
+            }
+
+            .gallery-footer {
+                min-height: 36px;
+                padding-top: 6px;
+            }
+
+            .modal-actions {
+                margin-top: -36px;
             }
         }
     </style>
