@@ -1409,9 +1409,10 @@
         }
 
         .gallery-footer {
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             flex: 0 0 var(--gallery-footer-height);
             gap: 18px;
             min-height: 0;
@@ -1420,6 +1421,9 @@
         }
 
         .gallery-page {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             color: var(--text);
             font-size: 14px;
             font-weight: 750;
